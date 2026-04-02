@@ -1,6 +1,6 @@
 # engenharia-de-prompt-fundamentos
 
-Prompt Genérico:
+### Prompt Genérico:
 **Machine Learning (Aprendizado de Máquina) é uma área da Inteligência Artificial que permite que computadores aprendam a partir de dados e realizem tarefas sem serem explicitamente programados. Em termos simples, é o processo de treinar modelos para reconhecer padrões, fazer previsões ou gerar conteúdo.**  [Wikipédia](https://pt.wikipedia.org/wiki/Aprendizado_de_m%C3%A1quina)  [Google Developers](https://developers.google.com/machine-learning/intro-to-ml/what-is-ml?hl=pt-br)  [Tecnoblog](https://tecnoblog.net/responde/machine-learning-o-que-e-como-funciona-e-quais-sao-os-tipos-de-aprendizado-de-maquina/)
 
 ---
@@ -47,7 +47,7 @@ Prompt Genérico:
 
 ---
 
-Prompt estruturado:
+### Prompt estruturado:
 Pense em **Machine Learning** como treinar um campeão no *League of Legends*. No começo, você não sabe jogar bem com ele, mas conforme pratica, observa o que funciona e o que não funciona, você começa a reconhecer padrões: quando usar as habilidades, como se posicionar, qual item comprar. O computador faz algo parecido: ele recebe muitos “dados de partidas” (informações), aprende quais decisões levam a vitórias e quais levam a derrotas, e assim melhora sua performance sem que alguém precise dizer cada passo.
 
 Agora imagine que o algoritmo é como um jogador iniciante que precisa aprender diferentes estilos de jogo. No aprendizado supervisionado, é como se tivesse um coach mostrando replays e dizendo “isso foi certo” ou “isso foi errado”. No aprendizado não supervisionado, é como se o jogador tivesse que descobrir sozinho quais campeões se parecem em estilo de jogo, agrupando-os sem dicas. Já no aprendizado por reforço, é como treinar jogando ranked: cada vitória dá recompensa (Pontos de Liga), cada derrota é um castigo, e o sistema aprende por tentativa e erro. Assim como você evolui no LoL, o computador evolui com dados e feedback.
