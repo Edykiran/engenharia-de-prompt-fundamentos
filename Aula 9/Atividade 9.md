@@ -1,6 +1,6 @@
 # ⚠️ Aviso Importante
 
-Infelizmente, estamos enfrentando **dificuldades para concluir a tarefa** solicitada.  
-O motivo principal é a **complexidade técnica** envolvida, o que pode gerar atrasos ou até impedir a execução completa neste momento.
+Infelizmente, estou enfrentando **dificuldades para concluir a tarefa** solicitada.  
+O motivo principal é a **Falta de internet em minha residência**, o que pode gerar atrasos ou até impedir a execução completa neste momento. Visto que o meu dispositívo não reconhece outros roteadores, somente o wi-fi
 
-Pedimos compreensão e sugerimos avaliar alternativas ou prazos adicionais para garantir a melhor entrega possível.
+Peço a sua compreensão.
