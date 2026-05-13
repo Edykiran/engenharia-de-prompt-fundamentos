@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agente Inteligente de Organização de Horários</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="logo">⏰ AgendAI</h1>
+                <p class="tagline">Seu organizador inteligente</p>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <button class="nav-btn active" data-section="dashboard">
+                    <span class="icon">📊</span>
+                    <span>Dashboard</span>
+                </button>
+                <button class="nav-btn" data-section="add-task">
+                    <span class="icon">➕</span>
+                    <span>Adicionar Tarefa</span>
+                </button>
+                <button class="nav-btn" data-section="schedule">
+                    <span class="icon">📅</span>
+                    <span>Agenda</span>
+                </button>
+                <button class="nav-btn" data-section="analytics">
+                    <span class="icon">📈</span>
+                    <span>Análise</span>
+                </button>
+                <button class="nav-btn" data-section="settings">
+                    <span class="icon">⚙️</span>
+                    <span>Configurações</span>
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <h2 id="section-title">Dashboard</h2>
+                </div>
+                <div class="header-right">
+                    <div class="date-time">
+                        <span id="current-date"></span>
+                        <span id="current-time"></span>
+                    </div>
+                    <div class="user-avatar">👤</div>
+                </div>
+            </header>
+
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="section active">
+                <div class="dashboard-grid">
+                    <!-- Cards de Resumo -->
+                    <div class="card summary-card">
+                        <div class="card-icon">📋</div>
+                        <h3>Tarefas Hoje</h3>
+                        <p class="stat-number" id="tasks-today">0</p>
+                    </div>
+                    <div class="card summary-card">
+                        <div class="card-icon">✅</div>
+                        <h3>Concluídas</h3>
+                        <p class="stat-number" id="completed-tasks">0</p>
+                    </div>
+                    <div class="card summary-card">
+                        <div class="card-icon">⏳</div>
+                        <h3>Pendentes</h3>
+                        <p class="stat-number" id="pending-tasks">0</p>
+                    </div>
+                    <div class="card summary-card">
+                        <div class="card-icon">🎯</div>
+                        <h3>Produtividade</h3>
+                        <p class="stat-number" id="productivity">0%</p>
+                    </div>
+                </div>
+
+                <!-- Próximos Compromissos -->
+                <div class="card full-width">
+                    <h3 class="card-title">Próximos Compromissos</h3>
+                    <div id="upcoming-tasks" class="tasks-list">
+                        <p class="empty-state">Nenhuma tarefa agendada. Comece adicionando uma!</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Add Task Section -->
+            <section id="add-task" class="section">
+                <div class="card">
+                    <h3 class="card-title">Nova Tarefa</h3>
+                    <form id="task-form" class="form">
+                        <div class="form-group">
+                            <label for="task-title">Título da Tarefa *</label>
+                            <input type="text" id="task-title" placeholder="Ex: Reunião com equipe" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="task-description">Descrição</label>
+                            <textarea id="task-description" placeholder="Detalhes adicionais..." rows="4"></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="task-date">Data *</label>
+                                <input type="date" id="task-date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="task-time">Hora *</label>
+                                <input type="time" id="task-time" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="task-duration">Duração (minutos)</label>
+                                <input type="number" id="task-duration" value="60" min="15" step="15">
+                            </div>
+                            <div class="form-group">
+                                <label for="task-priority">Prioridade</label>
+                                <select id="task-priority">
+                                    <option value="baixa">Baixa</option>
+                                    <option value="média" selected>Média</option>
+                                    <option value="alta">Alta</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="task-category">Categoria</label>
+                            <select id="task-category">
+                                <option value="">Selecionar...</option>
+                                <option value="trabalho">Trabalho</option>
+                                <option value="estudo">Estudo</option>
+                                <option value="saude">Saúde</option>
+                                <option value="pessoal">Pessoal</option>
+                                <option value="financeiro">Financeiro</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group checkbox">
+                            <input type="checkbox" id="task-recurring">
+                            <label for="task-recurring">Tarefa Recorrente</label>
+                        </div>
+
+                        <div id="recurring-options" class="recurring-options hidden">
+                            <div class="form-group">
+                                <label for="recurring-type">Frequência</label>
+                                <select id="recurring-type">
+                                    <option value="daily">Diariamente</option>
+                                    <option value="weekly">Semanalmente</option>
+                                    <option value="monthly">Mensalmente</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Adicionar Tarefa</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Schedule Section -->
+            <section id="schedule" class="section">
+                <div class="schedule-controls">
+                    <button class="btn btn-secondary" id="prev-week">← Semana Anterior</button>
+                    <h3 id="week-display"></h3>
+                    <button class="btn btn-secondary" id="next-week">Próxima Semana →</button>
+                </div>
+
+                <div class="weekly-schedule">
+                    <div id="schedule-grid" class="schedule-grid"></div>
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section id="analytics" class="section">
+                <div class="card">
+                    <h3 class="card-title">Análise de Produtividade</h3>
+                    <div class="analytics-grid">
+                        <div class="analytics-item">
+                            <h4>Tarefas por Categoria</h4>
+                            <div id="category-chart" class="chart"></div>
+                        </div>
+                        <div class="analytics-item">
+                            <h4>Tarefas por Prioridade</h4>
+                            <div id="priority-chart" class="chart"></div>
+                        </div>
+                        <div class="analytics-item">
+                            <h4>Taxa de Conclusão</h4>
+                            <div id="completion-chart" class="chart"></div>
+                        </div>
+                        <div class="analytics-item">
+                            <h4>Horas Utilizadas</h4>
+                            <div id="hours-chart" class="chart"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">Relatório Semanal</h3>
+                    <div id="weekly-report" class="report"></div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="section">
+                <div class="card">
+                    <h3 class="card-title">Configurações</h3>
+                    
+                    <div class="settings-group">
+                        <h4>Preferências de Notificação</h4>
+                        <div class="settings-item">
+                            <label>
+                                <input type="checkbox" id="notify-15min" checked>
+                                Notificação 15 minutos antes
+                            </label>
+                        </div>
+                        <div class="settings-item">
+                            <label>
+                                <input type="checkbox" id="notify-1hour" checked>
+                                Notificação 1 hora antes
+                            </label>
+                        </div>
+                        <div class="settings-item">
+                            <label>
+                                <input type="checkbox" id="notify-sound" checked>
+                                Som de notificação
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h4>Horário de Funcionamento</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="work-start">Início do dia</label>
+                                <input type="time" id="work-start" value="08:00">
+                            </div>
+                            <div class="form-group">
+                                <label for="work-end">Fim do dia</label>
+                                <input type="time" id="work-end" value="18:00">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h4>Ações</h4>
+                        <button class="btn btn-secondary" id="export-btn">📥 Exportar Dados</button>
+                        <button class="btn btn-secondary" id="import-btn">📤 Importar Dados</button>
+                        <button class="btn btn-danger" id="clear-btn">🗑️ Limpar Tudo</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Hidden input for import -->
+    <input type="file" id="import-file" accept=".json" style="display: none;">
+
+    <script src="script.js"></script>
+</body>
+</html>
