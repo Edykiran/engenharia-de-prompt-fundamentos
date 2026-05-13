@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgendAI - Agente Inteligente de Organização</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>AgendAI - Organizador Inteligente</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,13 +12,13 @@
     <div class="floating-orbs"></div>
 
     <div class="app-container">
-        <!-- Modern Sidebar -->
+        <!-- SIDEBAR -->
         <aside class="modern-sidebar">
             <div class="sidebar-brand">
                 <div class="brand-icon">⏰</div>
                 <div class="brand-text">
                     <h1>AgendAI</h1>
-                    <p>Smart Scheduler</p>
+                    <p>Smart Organizer</p>
                 </div>
             </div>
 
@@ -53,13 +53,13 @@
             </div>
         </aside>
 
-        <!-- Main Area -->
+        <!-- MAIN AREA -->
         <div class="main-area">
-            <!-- Top Bar -->
+            <!-- TOP BAR -->
             <div class="top-bar">
-                <div class="top-bar-left">
+                <div>
                     <button class="quick-add-btn" id="quick-add">
-                        <span class="plus-icon">+</span>
+                        <span>+</span>
                         <span>Nova Tarefa</span>
                     </button>
                 </div>
@@ -68,235 +68,235 @@
                     <div class="time-display">
                         <div class="date-section">
                             <div class="date-day" id="current-day">13</div>
-                            <div class="date-info">
+                            <div>
                                 <div class="date-month" id="current-month">Mai</div>
-                                <div class="date-year" id="current-year">2026</div>
                             </div>
                         </div>
                         <div class="time-section">
                             <div class="time-value" id="current-time">14:30</div>
                         </div>
                     </div>
-                    <div class="user-menu">
-                        <div class="user-avatar">👤</div>
-                    </div>
+                    <div class="user-avatar">👤</div>
                 </div>
             </div>
 
-            <!-- Dashboard Section -->
-            <section id="dashboard" class="content-section active">
-                <div class="dashboard-hero">
-                    <div class="hero-greeting">
-                        <h2>Bem-vindo, Usuário! 👋</h2>
-                        <p class="hero-subtitle">Aqui está o resumo do seu dia</p>
+            <!-- CONTENT AREA -->
+            <div class="content-area">
+                <!-- DASHBOARD -->
+                <section id="dashboard" class="content-section active">
+                    <div class="page-header">
+                        <h1 class="page-title">Bem-vindo de Volta! 👋</h1>
+                        <p class="page-subtitle">Aqui está o resumo do seu dia</p>
                     </div>
-                </div>
 
-                <div class="stats-grid">
-                    <div class="stat-card primary">
-                        <div class="stat-icon">📋</div>
-                        <div class="stat-content">
-                            <div class="stat-label">Tarefas Hoje</div>
-                            <div class="stat-value" id="today-count">0</div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">📋</div>
+                            <div class="stat-content">
+                                <div class="stat-label">Tarefas Hoje</div>
+                                <div class="stat-value" id="today-count">0</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">✅</div>
+                            <div class="stat-content">
+                                <div class="stat-label">Concluídas</div>
+                                <div class="stat-value" id="completed-count">0</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⏳</div>
+                            <div class="stat-content">
+                                <div class="stat-label">Pendentes</div>
+                                <div class="stat-value" id="pending-count">0</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🔥</div>
+                            <div class="stat-content">
+                                <div class="stat-label">Produtividade</div>
+                                <div class="stat-value" id="productivity-score">0%</div>
+                            </div>
                         </div>
                     </div>
-                    <div class="stat-card success">
-                        <div class="stat-icon">✅</div>
-                        <div class="stat-content">
-                            <div class="stat-label">Concluídas</div>
-                            <div class="stat-value" id="completed-count">0</div>
-                        </div>
-                    </div>
-                    <div class="stat-card warning">
-                        <div class="stat-icon">⏳</div>
-                        <div class="stat-content">
-                            <div class="stat-label">Pendentes</div>
-                            <div class="stat-value" id="pending-count">0</div>
-                        </div>
-                    </div>
-                    <div class="stat-card accent">
-                        <div class="stat-icon">🔥</div>
-                        <div class="stat-content">
-                            <div class="stat-label">Produtividade</div>
-                            <div class="stat-value" id="productivity-score">0%</div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="featured-section">
-                    <h3>📌 Próximas Tarefas</h3>
-                    <div class="featured-list" id="upcoming-tasks">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">📌 Próximas Tarefas</h3>
+                        </div>
+                        <div class="featured-list" id="upcoming-tasks">
+                            <div class="empty-state">
+                                <span class="empty-icon">📭</span>
+                                <p>Nenhuma tarefa agendada</p>
+                                <button class="cta-btn" onclick="openModal()">Adicionar Tarefa</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TASKS -->
+                <section id="tasks" class="content-section">
+                    <div class="section-header">
+                        <h2>Minhas Tarefas</h2>
+                        <div class="filter-tabs">
+                            <button class="filter-tab active" data-filter="all">Todas</button>
+                            <button class="filter-tab" data-filter="pending">Pendentes</button>
+                            <button class="filter-tab" data-filter="completed">Concluídas</button>
+                        </div>
+                    </div>
+
+                    <div class="tasks-container" id="tasks-list">
                         <div class="empty-state">
-                            <span class="empty-icon">📭</span>
-                            <p>Nenhuma tarefa agendada</p>
-                            <button class="cta-btn" id="add-first-task">Adicionar Tarefa</button>
+                            <span class="empty-icon">✨</span>
+                            <p>Você não tem tarefas ainda</p>
+                            <button class="cta-btn" onclick="openModal()">Criar Primeira Tarefa</button>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <!-- Tasks Section -->
-            <section id="tasks" class="content-section">
-                <div class="section-header">
-                    <h2>Minhas Tarefas</h2>
-                    <div class="filter-tabs">
-                        <button class="filter-tab active" data-filter="all">Todas</button>
-                        <button class="filter-tab" data-filter="pending">Pendentes</button>
-                        <button class="filter-tab" data-filter="completed">Concluídas</button>
-                    </div>
-                </div>
-
-                <div class="tasks-container" id="tasks-list">
-                    <div class="empty-state">
-                        <span class="empty-icon">✨</span>
-                        <p>Você não tem tarefas ainda</p>
-                        <button class="cta-btn" id="add-task-btn">Criar Primeira Tarefa</button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Schedule Section -->
-            <section id="schedule" class="content-section">
-                <div class="section-header">
-                    <h2>Sua Agenda</h2>
-                </div>
-
-                <div class="calendar-wrapper">
-                    <div class="calendar-nav">
-                        <h3 id="month-year">Maio 2026</h3>
-                        <div>
-                            <button class="calendar-nav-btn" id="prev-month">←</button>
-                            <button class="calendar-nav-btn" id="next-month">→</button>
-                        </div>
-                    </div>
-                    <div class="calendar-grid" id="calendar-grid"></div>
-                </div>
-
-                <div class="week-schedule">
-                    <h3>📅 Sua Semana</h3>
-                    <div class="week-view" id="week-view"></div>
-                </div>
-            </section>
-
-            <!-- Focus Section -->
-            <section id="focus" class="content-section">
-                <div class="section-header">
-                    <h2>Modo Focus 🎯</h2>
-                </div>
-
-                <div class="focus-container">
-                    <div class="focus-content">
-                        <div class="focus-timer">
-                            <div class="focus-time" id="focus-timer">25:00</div>
-                            <div class="focus-task" id="focus-task">Selecione uma tarefa</div>
-                            <div class="focus-controls">
-                                <button class="btn-focus" id="focus-start">▶ Iniciar</button>
-                                <button class="btn-focus" id="focus-reset">⟳ Resetar</button>
-                                <button class="btn-focus" id="focus-tasks">Escolher Tarefa</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Insights Section -->
-            <section id="insights" class="content-section">
-                <div class="section-header">
-                    <h2>Sua Produtividade 📊</h2>
-                </div>
-
-                <div class="insights-grid">
-                    <div class="insight-card">
-                        <h3>Distribuição por Categoria</h3>
-                        <div class="chart" id="category-chart">
-                            <div style="color: var(--text-tertiary);">Sem dados</div>
-                        </div>
-                    </div>
-                    <div class="insight-card">
-                        <h3>Tarefas por Prioridade</h3>
-                        <div class="chart" id="priority-chart">
-                            <div style="color: var(--text-tertiary);">Sem dados</div>
-                        </div>
-                    </div>
-                    <div class="insight-card">
-                        <h3>Taxa de Conclusão</h3>
-                        <div class="chart" id="completion-chart">
-                            <div style="color: var(--text-tertiary);">Sem dados</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="insights-stats">
-                    <div class="insight-stat">
-                        <span class="label">Total de Tarefas</span>
-                        <span class="value" id="stat-total">0</span>
-                    </div>
-                    <div class="insight-stat">
-                        <span class="label">Concluídas</span>
-                        <span class="value" id="stat-completed">0</span>
-                    </div>
-                    <div class="insight-stat">
-                        <span class="label">Taxa</span>
-                        <span class="value" id="stat-rate">0%</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Settings Section -->
-            <section id="settings" class="content-section">
-                <div class="section-header">
-                    <h2>Configurações ⚙️</h2>
-                </div>
-
-                <div class="settings-grid">
-                    <div class="setting-card">
-                        <h3>Notificações</h3>
-                        <div class="setting-item">
-                            <label>
-                                <input type="checkbox" id="notify-15min" checked>
-                                Notificação 15 min antes
-                            </label>
-                        </div>
-                        <div class="setting-item">
-                            <label>
-                                <input type="checkbox" id="notify-1hour" checked>
-                                Notificação 1 hora antes
-                            </label>
-                        </div>
-                        <div class="setting-item">
-                            <label>
-                                <input type="checkbox" id="notify-sound" checked>
-                                Som na notificação
-                            </label>
-                        </div>
+                <!-- SCHEDULE -->
+                <section id="schedule" class="content-section">
+                    <div class="section-header">
+                        <h2>Sua Agenda</h2>
                     </div>
 
-                    <div class="setting-card">
-                        <h3>Horário de Funcionamento</h3>
-                        <div class="time-inputs">
+                    <div class="calendar-wrapper">
+                        <div class="calendar-nav">
+                            <h3 id="month-year">Maio 2026</h3>
                             <div>
-                                <label>Início</label>
-                                <input type="time" id="work-start" value="08:00">
+                                <button class="calendar-nav-btn" id="prev-month">←</button>
+                                <button class="calendar-nav-btn" id="next-month">→</button>
                             </div>
-                            <div>
-                                <label>Fim</label>
-                                <input type="time" id="work-end" value="18:00">
+                        </div>
+                        <div class="calendar-grid" id="calendar-grid"></div>
+                    </div>
+
+                    <div class="week-schedule">
+                        <h3>📅 Sua Semana</h3>
+                        <div class="week-view" id="week-view"></div>
+                    </div>
+                </section>
+
+                <!-- FOCUS -->
+                <section id="focus" class="content-section">
+                    <div class="section-header">
+                        <h2>Modo Focus 🎯</h2>
+                    </div>
+
+                    <div class="focus-container">
+                        <div class="focus-content">
+                            <div class="focus-timer">
+                                <div class="focus-time" id="focus-timer">25:00</div>
+                                <div class="focus-task" id="focus-task">Selecione uma tarefa</div>
+                                <div class="focus-controls">
+                                    <button class="btn-focus" id="focus-start">▶ Iniciar</button>
+                                    <button class="btn-focus" id="focus-reset">⟳ Resetar</button>
+                                    <button class="btn-focus" id="focus-tasks">Escolher Tarefa</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- INSIGHTS -->
+                <section id="insights" class="content-section">
+                    <div class="section-header">
+                        <h2>Sua Produtividade 📊</h2>
+                    </div>
+
+                    <div class="insights-grid">
+                        <div class="insight-card">
+                            <h3>Distribuição por Categoria</h3>
+                            <div class="chart" id="category-chart">
+                                <div style="color: var(--text-tertiary); text-align: center;">Sem dados</div>
+                            </div>
+                        </div>
+                        <div class="insight-card">
+                            <h3>Tarefas por Prioridade</h3>
+                            <div class="chart" id="priority-chart">
+                                <div style="color: var(--text-tertiary); text-align: center;">Sem dados</div>
+                            </div>
+                        </div>
+                        <div class="insight-card">
+                            <h3>Taxa de Conclusão</h3>
+                            <div class="chart" id="completion-chart">
+                                <div style="color: var(--text-tertiary); text-align: center;">Sem dados</div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="setting-card">
-                        <h3>Dados</h3>
-                        <button class="btn-secondary" id="export-btn">📥 Exportar Dados</button>
-                        <button class="btn-secondary" id="import-btn">📤 Importar Dados</button>
-                        <button class="btn-danger" id="clear-btn">🗑️ Limpar Tudo</button>
+                    <div class="insights-stats">
+                        <div class="insight-stat">
+                            <span class="label">Total de Tarefas</span>
+                            <span class="value" id="stat-total">0</span>
+                        </div>
+                        <div class="insight-stat">
+                            <span class="label">Concluídas</span>
+                            <span class="value" id="stat-completed">0</span>
+                        </div>
+                        <div class="insight-stat">
+                            <span class="label">Taxa</span>
+                            <span class="value" id="stat-rate">0%</span>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+
+                <!-- SETTINGS -->
+                <section id="settings" class="content-section">
+                    <div class="section-header">
+                        <h2>Configurações ⚙️</h2>
+                    </div>
+
+                    <div class="settings-grid">
+                        <div class="setting-card">
+                            <h3>Notificações</h3>
+                            <div class="setting-item">
+                                <label>
+                                    <input type="checkbox" id="notify-15min" checked>
+                                    Notificação 15 min antes
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <label>
+                                    <input type="checkbox" id="notify-1hour" checked>
+                                    Notificação 1 hora antes
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <label>
+                                    <input type="checkbox" id="notify-sound" checked>
+                                    Som na notificação
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-card">
+                            <h3>Horário de Funcionamento</h3>
+                            <div class="time-inputs">
+                                <div>
+                                    <label>Início</label>
+                                    <input type="time" id="work-start" value="08:00">
+                                </div>
+                                <div>
+                                    <label>Fim</label>
+                                    <input type="time" id="work-end" value="18:00">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="setting-card">
+                            <h3>Dados</h3>
+                            <button class="btn-secondary" id="export-btn">📥 Exportar Dados</button>
+                            <button class="btn-secondary" id="import-btn">📤 Importar Dados</button>
+                            <button class="btn-danger" id="clear-btn">🗑️ Limpar Tudo</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </div>
     </div>
 
-    <!-- Add Task Modal -->
+    <!-- MODAL -->
     <div class="modal" id="add-task-modal">
         <div class="modal-overlay" onclick="closeModal()"></div>
         <div class="modal-content">
@@ -352,7 +352,6 @@
         </div>
     </div>
 
-    <!-- Hidden file input for imports -->
     <input type="file" id="import-file" accept=".json" style="display: none;">
 
     <script src="script.js"></script>
