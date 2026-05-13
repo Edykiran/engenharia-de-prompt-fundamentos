@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda Inteligente</title>
+    <link rel="stylesheet" href="agenda-style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>📅 Agenda Inteligente</h1>
+                <div class="date-time">
+                    <span id="data-atual"></span>
+                    <span id="hora-atual"></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Input Section -->
+            <section class="input-section">
+                <h2>Adicionar Tarefa</h2>
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        id="input-tarefa" 
+                        placeholder="Digite sua tarefa..."
+                        class="input-tarefa"
+                    >
+                    <input 
+                        type="time" 
+                        id="input-hora" 
+                        class="input-hora"
+                    >
+                    <select id="input-prioridade" class="input-prioridade">
+                        <option value="baixa">Baixa</option>
+                        <option value="média" selected>Média</option>
+                        <option value="alta">Alta</option>
+                    </select>
+                    <button id="btn-adicionar" class="btn-adicionar">
+                        ➕ Adicionar
+                    </button>
+                </div>
+            </section>
+
+            <!-- Filters -->
+            <section class="filters">
+                <button class="filter-btn active" data-filter="todas">Todas</button>
+                <button class="filter-btn" data-filter="alta">Alta Prioridade</button>
+                <button class="filter-btn" data-filter="média">Média Prioridade</button>
+                <button class="filter-btn" data-filter="baixa">Baixa Prioridade</button>
+                <button class="filter-btn" data-filter="concluida">Concluídas</button>
+            </section>
+
+            <!-- Tasks Container -->
+            <section class="tasks-section">
+                <!-- Today's Tasks -->
+                <div class="tasks-group">
+                    <h3 class="group-title">⏰ Próximas Tarefas</h3>
+                    <div id="tarefas-proximas" class="tasks-list"></div>
+                </div>
+
+                <!-- All Tasks -->
+                <div class="tasks-group">
+                    <h3 class="group-title">📋 Todas as Tarefas</h3>
+                    <div id="tarefas-lista" class="tasks-list"></div>
+                </div>
+            </section>
+
+            <!-- Stats -->
+            <section class="stats-section">
+                <div class="stat-card">
+                    <span class="stat-label">Total de Tarefas</span>
+                    <span class="stat-value" id="total-tarefas">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Concluídas</span>
+                    <span class="stat-value concluidas" id="total-concluidas">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Pendentes</span>
+                    <span class="stat-value pendentes" id="total-pendentes">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Alta Prioridade</span>
+                    <span class="stat-value alta" id="total-alta">0</span>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <button id="btn-limpar-concluidas" class="btn-limpar">
+                🗑️ Limpar Concluídas
+            </button>
+            <button id="btn-exportar" class="btn-exportar">
+                📥 Exportar Tarefas
+            </button>
+        </footer>
+    </div>
+
+    <!-- Modal de Edição -->
+    <div id="modal-edicao" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Editar Tarefa</h2>
+            <input type="text" id="modal-tarefa" class="input-tarefa" placeholder="Descrição da tarefa">
+            <input type="time" id="modal-hora" class="input-hora">
+            <select id="modal-prioridade" class="input-prioridade">
+                <option value="baixa">Baixa</option>
+                <option value="média">Média</option>
+                <option value="alta">Alta</option>
+            </select>
+            <button id="btn-salvar-edicao" class="btn-adicionar">Salvar Alterações</button>
+        </div>
+    </div>
+
+    <script src="agenda-script.js"></script>
+</body>
+</html>
